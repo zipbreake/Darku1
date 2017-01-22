@@ -1,0 +1,10 @@
+15-Jun-05
+   - Revisar el modo B, da privilegios que no debería
+   - Implementar el modo e (Devel)
+   - Optimizar la función de dar privilegios por BDD
+   - Pasar el poder usar modos k y X a privilegios de BDD
+   - Hacer el TOPIC BURST
+
+16-Nov-04
+   - Pensar como hacer para el futuro sistema passport integrado dentro del propio ircd. (RECHAZADO)
+

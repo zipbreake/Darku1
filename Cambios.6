@@ -1,0 +1,431 @@
+* 2005/12/05 ZipBreake <jfv@javierfv.com>     DarkU-6.02r31       FEATURE
+  -----------------------------------------------------------------------
+  Actualizamos información en los correos de los creditos.
+
+* 2005/11/07 zipbreake@darkbolt.org         DarkU-6.02r30         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos un modo de flag que nos indica si un Bot de Usuario puede
+  o no recibir privados de otros usuarios. En caso de no recibirlos el
+  servidor informará de que es imposible hablar por privado con ese nick.
+
+* 2005/11/07 zipbreake@darkbolt.org         DarkU-6.02r29         FEATURE
+  -----------------------------------------------------------------------
+  Los bots de usuario (UserBot) no caen por flood.
+
+* 2005/11/04 zipbreake@darkbolt.org         DarkU-6.02r28         FEATURE
+  -----------------------------------------------------------------------
+  La rutina de configuración hace entrar a un userbot al ponerse su nick
+  en los canales para los que esta configurado (auto-join). Falta
+  terminarla.
+
+* 2005/11/04 zipbreake@darkbolt.org         DarkU-6.02r27         FEATURE
+  -----------------------------------------------------------------------
+  Un bot de usuario solamente puede hablar en un canal cuando esta dentro
+  del mismo, aunque el canal no tenga modo +n.
+
+* 2005/11/04 zipbreake@darkbolt.org         DarkU-6.02r26         FEATURE
+  -----------------------------------------------------------------------
+  Un 'usuario' con modo +b, pasa a ser un bot de usuario y hay que evitar
+  que pueda aprovecharse de sus privilegios, un bot +b debe de estar
+  SIEMPRE en los canales para los que fue registrado y solo aceptar
+  privados de usuarios con +r. Por esto, equiparamos el +b al +R en sus
+  funciones. Tampoco dejamos al bot hacer JOIN ni PART de canales,
+  se le fijarán futuramente y de forma "obligada" en que canales debe de
+  permanecer.
+
+* 2005/11/04 zipbreake@darkbolt.org         DarkU-6.02r25         FEATURE
+  -----------------------------------------------------------------------
+  Inicializamos la tabla de base de datos distribuida de bots 'b', si
+  un nick registrado y no suspendido está en esa base de datos se le
+  otorga el modo +b (bot de usuario)
+
+* 2005/11/04 zipbreake@darkbolt.org         DarkU-6.02r24         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos el modo +b de UserBot o Bot de Usuario.
+
+* 2005/11/04 zipbreake@darkbolt.org         DarkU-6.02r23         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos en tabla 'z' la configuración de 'final.ipvirtual.ubot'
+  que nos permite establecer un final diferente a '.virtual' para los
+  futuros bots de usuario.
+
+* 2005/10/31 zipbreake@darkbolt.org         DarkU-6.02r22             FIX
+  -----------------------------------------------------------------------
+  El parche anterior no funcionaba del todo correctamente, ahora ya si.
+
+* 2005/10/27 zipbreake@darkbolt.org         DarkU-6.02r21             FIX
+  -----------------------------------------------------------------------
+  Eliminamos un error de la DB que hacia morir el servidor.
+
+* 2005/10/27 zipbreake@darkbolt.org         DarkU-6.02r20         FEATURE
+  -----------------------------------------------------------------------
+  Actualizamos la entrada de modos de operador en caliente al sistema de
+  la base de datos de flags.
+
+* 2005/10/19 zipbreake@darkbolt.org         DarkU-6.02r19         FEATURE
+  -----------------------------------------------------------------------
+  Los bots oficiales de la BDD, no tienen el +k ligado al modo +B, sino
+  que debe de ser indicado si lo tienen o no en sus flags.
+
+* 2005/10/19 zipbreake@darkbolt.org         DarkU-6.02r18         FEATURE
+  -----------------------------------------------------------------------
+  Restringimos el modo +k y modo +X a los usuarios que tengan esos flags
+  en la base de datos (tabla o).
+
+* 2005/10/19 zipbreake@darkbolt.org         DarkU-6.02r17         FEATURE
+  -----------------------------------------------------------------------
+  Añadimos las funciones SetChannelService, ClearChannelService para
+  fijar y quitar el modo +k mas facilmente.
+
+* 2005/10/19 zipbreake@darkbolt.org         DarkU-6.02r16             FIX
+  -----------------------------------------------------------------------
+  Arreglamos el cambio en caliente de modos al variar los flags en la BDD
+  de la tabla o. Parche para el borrado de la base de datos.
+
+* 2005/10/19 zipbreake@darkbolt.org         DarkU-6.02r15         FEATURE
+  -----------------------------------------------------------------------
+  Programo el cambio de modos en caliente para la tabla n. Los modos de
+  suspension y de registro, ahora se ponen al momento, ya no hace falta
+  hacer un RENAME al usuario.
+
+* 2005/09/25 zipbreake@darkbolt.org         DarkU-6.02r14         FEATURE
+  -----------------------------------------------------------------------
+  Cambiamos el servidor del cvsupdate.
+
+* 2005/09/25 zipbreake@darkbolt.org         DarkU-6.02r13         FEATURE
+  -----------------------------------------------------------------------
+  El ejemplo.conf ha sido adaptado a la red DarkBolt.
+
+* 2005/09/22 zipbreake@darkbolt.org         DarkU-6.02r12             FIX
+  -----------------------------------------------------------------------
+  Al instalar un nuevo servidor se ponia el nombre de la red por defecto
+  diferente a DarkBolt
+
+* 2005/07/27 zipbreake@darkbolt.org         DarkU-6.02r11             FIX
+  -----------------------------------------------------------------------
+  El parche de traducción cogido de alfredo no funcionaba bien por estar
+  cogido tal cual de otro ircd, procedemos a revertirlo, tambien se
+  elimina a UniWorlds del version.
+
+* 2005/07/05 zipbreake@darkbolt.org         DarkU-6.02r10             FIX
+  -----------------------------------------------------------------------
+  Arreglamos el problema que mostraba el cambio de ip más de una vez al
+  perder un modo de representante de red.
+
+* 2005/06/26 zipbreake@darkbolt.org         DarkU-6.02r09             FIX
+  -----------------------------------------------------------------------
+  Revertimos el parche en el que reimplementabamos la base de un futuro
+  modo "developer"
+
+* 2005/06/26 zipbreake@darkbolt.org         DarkU-6.02r08         FEATURE
+  -----------------------------------------------------------------------
+  Habia un error que no permitia fijar el flag h en la BDD
+
+* 2005/06/14 zipbreake@darkbolt.org         DarkU-6.02r07         FEATURE
+  -----------------------------------------------------------------------
+  Cuando el valor de 'ocultar.servidores.en.el.map' es '1' los servidores
+  se ocultan mostrando el MAP pero el nombre del servidor con un '*', si
+  el valor es '2' no se muestra nada del MAP. El nombre del servidor en
+  el resto de comandos permanece siempre oculto.
+
+* 2005/06/14 zipbreake@darkbolt.org         DarkU-6.02r06         FEATURE
+  -----------------------------------------------------------------------
+  Cambios en las estructuras de flags de la tabla o y los modos de los
+  usuarios.
+
+* 2005/06/14 zipbreake@darkbolt.org         DarkU-6.02r05         FEATURE
+  -----------------------------------------------------------------------
+  Añado a Alfredo a los creditos ;D
+
+* 2005/06/14 alfredo@uniworlds.org          DarkU-6.02r04         FEATURE
+  -----------------------------------------------------------------------
+  Comienza la traducción del ircd al español (s_err.c)
+
+* 2005/06/14 zipbreake@darkbolt.org         DarkU-6.02r03         CLEANUP
+  -----------------------------------------------------------------------
+  Limpiamos el codigo relativo al modo C que nunca ha estado realmente
+  implementado.
+
+* 2005/06/14 zipbreake@darkbolt.org         DarkU-6.02r02         FEATURE
+  -----------------------------------------------------------------------
+  Reimplemento la opción de compilar con opción de permitir kills solo
+  locales o globales para los ircops (por defecto).
+
+* 2005/06/13 zipbreake@darkbolt.org         DarkU-6.02r01         FEATURE
+  -----------------------------------------------------------------------
+  Eliminamos DarkBolt como la red por defecto del ircd y ponemos a
+  UniWorlds, posible red que utilizará este ircd de ahora en adelante.
+  también limpiamos en el código varias menciones a Eclipse por no usar
+  esta red este ircd.
+
+* 2005/04/20 zipbreake@darkbolt.org         DarkU-6.01r52         FEATURE
+  -----------------------------------------------------------------------
+  Se elimina el modo +b (userbot) y todos sus privilegios.
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r51         FEATURE
+  -----------------------------------------------------------------------
+  Aunque tenga modo +k un usuario con +b solo puede hablar en los canales
+  en los que esta presente.
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r50         FEATURE
+  -----------------------------------------------------------------------
+  Ahora tambien le permitimos al bot salir de los canales en los que esta
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r49         CLEANUP
+  -----------------------------------------------------------------------
+  Quitamos el codigo de proteccion de bots de usuario en canales, ahora
+  tendrán modo +k y su proteccion y privilegios se rigen por este modo.
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r48         FEATURE
+  -----------------------------------------------------------------------
+  Un usuario con modo +b no debe poder cambiarse el nick a su antojo
+  el nick debe quedar prefijado.
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r47         FEATURE
+  -----------------------------------------------------------------------
+  Se obtiene modo b y modo k para todos los usuarios que esten en la 
+  tabla b, Tabla de bots limitados.
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r46         FEATURE
+  -----------------------------------------------------------------------
+  Eliminamos el flag y modo e de Developer por carencia de necesidad.
+
+* 2005/04/08 zipbreake@darkbolt.org         DarkU-6.01r45         FEATURE
+  -----------------------------------------------------------------------
+  Dejamos de dar soporte al modo +b en la tabla o del ircd.
+
+* 2005/02/23 zipbreake@darkbolt.org         DarkU-6.01r44             FIX
+  -----------------------------------------------------------------------
+  Actualizado el codigo del whois, antes no se mostraba el nombre de
+  servidor ni descripcion a quien debia correctamente.
+
+* 2005/02/19 zipbreake@darkbolt.org         DarkU-6.01r43             FIX
+  -----------------------------------------------------------------------
+  Cambiamos en el whois la descripción por defecto de servidores que
+  mostraba el nombre de la red.
+
+* 2005/02/13 zipbreake@darkbolt.org         DarkU-6.01r42         FEATURE
+  -----------------------------------------------------------------------
+  Ciertos cambios estéticos ;)
+
+* 2005/02/13 zipbreake@darkbolt.org         DarkU-6.01r41             FIX
+  -----------------------------------------------------------------------
+  Solucionado un problema con las ocultaciones en el whois del nombre de
+  servidores y descipciones.
+
+* 2005/02/12 zipbreake@darkbolt.org         DarkU-6.01r40             FIX
+  -----------------------------------------------------------------------
+  Con el diseño de antes al hacer un whois si estaba activado el ocultar
+  datos pero no estaba algun dato de la tabla z definido daba problemas.
+
+* 2005/02/12 zipbreake@darkbolt.org         DarkU-6.01r39         FEATURE
+  -----------------------------------------------------------------------
+  Añadimos a la tabla z dos configuraciones nuevas. El 'nombre.de.la.red'
+  para que el NETWORK_NAME sea el mismo en toda la red, y el valor
+  'descripcion.servidores' para ocultar la descripcion de los servodores
+  en el whois cuando estan ocultos y poner esto en su lugar
+
+* 2005/02/09 zipbreake@darkbolt.org         DarkU-6.01r38         FEATURE
+  -----------------------------------------------------------------------
+  Se reestablece el KILL como un comando global para evitar problemas
+  de usuarios molestos cuando los bots se caen. Se confia en el criterio
+  de los IRCops.
+
+* 2005/01/13 zipbreake@darkbolt.org         DarkU-6.01r37             FIX
+  -----------------------------------------------------------------------
+  Arreglado un error en el KILL remoto, ahora todos los bots (+B) pueden
+  ejercer un KILL GLOBAL en la red.
+
+* 2005/01/13 zipbreake@darkbolt.org         DarkU-6.01r36         FEATURE
+  -----------------------------------------------------------------------
+  Finalmente revertimos el parche 6.01r35
+
+* 2005/01/13 zipbreake@darkbolt.org         DarkU-6.01r35             FIX
+  -----------------------------------------------------------------------
+  Eliminamos el parche 6.01r31
+
+* 2005/01/13 zipbreake@darkbolt.org         DarkU-6.01r34             FIX
+  -----------------------------------------------------------------------
+  Solucionamos un problema que podia darse en nicks cuando las versiones
+  no eran coincidentes.
+
+* 2005/01/05 zipbreake@darkbolt.org         DarkU-6.01r33         FEATURE
+  -----------------------------------------------------------------------
+  Finalmente la prohibición de nicks la bajo a solo 1 caracter para que
+  sea compatible con todas las redes que usan nicks de poco tamaño, los
+  de 1 caracter siguen prohibidos para evitar confusiones como en otras
+  muchas redes.
+
+* 2005/01/03 zipbreake@darkbolt.org         DarkU-6.01r32         FEATURE
+  -----------------------------------------------------------------------
+  Habilitamos la tabla b como tabla para canales de los bots de usuario
+  y configuración de los mismos.
+
+* 2005/01/03 zipbreake@darkbolt.org         DarkU-6.01r31         FEATURE
+  -----------------------------------------------------------------------
+  Los bots de usuarios no pueden hacer part de ninguno de sus canales.
+
+* 2005/01/03 zipbreake@darkbolt.org         DarkU-6.01r30         FEATURE
+  -----------------------------------------------------------------------
+  Aunque no tienen modo +k, los userbots no pueden ser kickeados ni deop
+  de los canales en los que se encuentren. Los Operadores de la red si
+  podrán ejecutar estas acciones sobre ellos.
+
+* 2005/01/03 zipbreake@darkbolt.org         DarkU-6.01r29         FEATURE
+  -----------------------------------------------------------------------
+  Los bots de usuarios (+b) no pueden ponerse el +k pero no tienen
+  limite en el flood como si tuviesen el +k. El modo +B ahora tambien
+  proporciona flood ilimitado aunque no se tenga el +k.
+
+* 2004/12/30 zipbreake@darkbolt.org         DarkU-6.01r28         FEATURE
+  -----------------------------------------------------------------------
+  Eliminamos la prohibicion de los nicks inv###### y a su vez prohibimos
+  el uso de nicks de dos y un caracter para evitar problemas y conflictos
+
+* 2004/12/29 er_maqui@darkbolt.net          DarkU-6.01r27             FIX
+  -----------------------------------------------------------------------
+  Solucionamos un fallo de dedependencias derivado del parche 6.01r25.
+
+* 2004/12/17 zipbreake@darkbolt.org         DarkU-6.01r26         FEATURE
+  -----------------------------------------------------------------------
+  La configuración de un bot virtual de nicks y otro de canales lo
+  eliminamos de la tabla b y lo pasamos a la tabla z de configuraciones
+  Los valores de la tabla z seran 'bot.virtual.nickserv' para nick y
+  'bot.virtual.chanserv' para canales. De momento la tabla 'b' la borramos
+  deja de ser residente.
+
+* 2004/12/17 zipbreake@darkbolt.org         DarkU-6.01r25         FEATURE
+  -----------------------------------------------------------------------
+  Añadimos al make config la opcion de poder definir el nombre de red
+  que deseamos como NETWORK_NAME
+
+* 2004/12/14 zipbreake@darkbolt.org         DarkU-6.01r24             FIX
+  -----------------------------------------------------------------------
+  Debemos aceptar kills remotos de otros servidores.
+
+* 2004/12/14 zipbreake@darkbolt.org         DarkU-6.01r23         FEATURE
+  -----------------------------------------------------------------------
+  Separamos la feature de seteo de flags de BDD en una función de forma
+  independiente, así podremos registrar operadores en caliente en un
+  futuro.
+
+* 2004/12/09 zipbreake@darkbolt.org         DarkU-6.01r22             FIX
+  -----------------------------------------------------------------------
+  El BURST no se enviaba bien a los nodos con los que linkaba el servidor
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r21             FIX
+  -----------------------------------------------------------------------
+  Fallo en el burst que distribuía mal los modos de los canales. Y los
+  modos de los usuarios en los canales.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r20             FIX
+  -----------------------------------------------------------------------
+  El parche anterior no funcionaba de forma plena.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r19             FIX
+  -----------------------------------------------------------------------
+  Corregimos un pequeño fallo que gestionaba mal los modos cuando un se
+  daba el caso de que un usuario auto-gestionaba sus modos de canal
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r18         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos el modo +O de canales, solo permite entrar al canal a
+  IRCops y Operadores o superiores.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r17         FEATURE
+  -----------------------------------------------------------------------
+  Los halfop (%) pueden dar voz (+) a otros usuarios del canal. Tambien
+  podrán quitar la voz.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r16         FEATURE
+  -----------------------------------------------------------------------
+  Ahora los usuarios con halfop o con voz, pueden quitarse el modo sobre
+  si mismos si asi lo quisiesen.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r15         FEATURE
+  -----------------------------------------------------------------------
+  Fijamos para el nuevo modo +h los privilegios de poder cambiar el topic
+  en un canal con +t, y poder kickear a los usuarios de un canal siempre
+  que no sean operadores (@) del mismo.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r14         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos completamente el modo +h de semi-operador, queda fijar
+  que tipo de privilegios tendra un usuario con dicho modo.
+
+* 2004/12/08 zipbreake@darkbolt.org         DarkU-6.01r13             FIX
+  -----------------------------------------------------------------------
+  Corregido un error que no distribuia bien los usuarios con voz por la
+  semi-implantación del halfop en el código fuente.
+
+* 2004/12/01 zipbreake@darkbolt.org         DarkU-6.01r12             FIX
+  -----------------------------------------------------------------------
+  Corregimos errores en la propagacion de mensajes que deberian de ser
+  ignorados por el servidor en canales y aumntamos el modo +c a negrita y
+  subrayado permitiendo solo texto plano en canales con ese modo.
+
+* 2004/12/01 zipbreake@darkbolt.org         DarkU-6.01r11         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos el modo +c que evita que un usuario pueda enviar colores
+  a un canal con dicho modo activado.
+
+* 2004/12/01 zipbreake@darkbolt.org         DarkU-6.01r10         FEATURE
+  -----------------------------------------------------------------------
+  Implementamos un nuevo modo para canales +C, este modo no permite el
+  envio de CTCPs a canales a menos que se sea Operador del canal.
+
+* 2004/12/01 er_maqui@darkbolt.net          DarkU-6.01r09             FIX
+  -----------------------------------------------------------------------
+  Modificamos el programa cvsupdate para que este actualize el IRCu desde
+  el cvs correspondiente, pero a su vez, le introducimos la feature de
+  que si detecta que la version del IRCu disponible es mas nueva, la
+  compila automaticamente y la monta en el directorio pertinente.
+
+* 2004/11/30 er_maqui@darkbolt.net          DarkU-6.01r08             FIX
+  -----------------------------------------------------------------------
+  De acuerdo con la nueva feature introducida en la version 6.01r07,
+  modificamos el make config para que no pregunte por la opcion de si se
+  permite killear usuarios de un servidor remoto.
+
+* 2004/11/30 zipbreake@darkbolt.org         DarkU-6.01r07         FEATURE
+  -----------------------------------------------------------------------
+  De ahora en adelante los IRCops solamente podrán killear a los usuarios
+  que esten en su servidor local.
+
+* 2004/11/18 zipbreake@darkbolt.org         DarkU-6.01r06         FEATURE
+  -----------------------------------------------------------------------
+  Debido a la confusión que puede causar la máscara virtual de los admins
+  de servidores, esta se elimina. Ahora los serverAdmins no tiene ninguna
+  ip virtual personalizada.
+
+* 2004/11/17 zipbreake@darkbolt.org         DarkU-6.01r05             FIX
+  -----------------------------------------------------------------------
+  Ahora se recalcula exclusivamente la IP virtual para el modo +A en la
+  función de cambios de modos al detectar el cambio de los modos que sean
+  pertinentes.
+
+* 2004/11/16 er_maqui@darkbolt.net          DarkU-6.01r04         FEATURE
+  -----------------------------------------------------------------------
+  Actualiamos toda la estructura de directorios de la documentacion de
+  versiones anteriores, para la subida al servidor CVS del codigo.
+
+* 2004/11/15 zipbreake@darkbolt.org         DarkU-6.01r03             FIX
+  -----------------------------------------------------------------------
+  Solucionado un problema de compilación para versiones de gcc inferiores
+  a la 3.x
+
+* 2004/11/13 zipbreake@darkbolt.org         DarkU-6.01r02             FIX
+  -----------------------------------------------------------------------
+  Solucionado un error que no permitia generar de forma correcta las ips
+  virtuales ligadas a los modos +A y +c
+
+* 2004/11/13 zipbreake@darkbolt.org         DarkU-6.01r01             FIX
+  -----------------------------------------------------------------------
+  Corregimos un error que quedaba y no asignaba correctamente el modo +A
+  a los usuarios que se identificaban con el nick antes que como ircops.
+
+* 2004/11/13 zipbreake@darkbolt.org         DarkU-6.01r00         FEATURE
+  -----------------------------------------------------------------------
+  Iniciamos esta nueva versión del DarkU resultado de la fusión del
+  antiguo proyecto DarkU con el proyecto de elaboración de un ircd propio
+  para la red iRC-Eclipse.

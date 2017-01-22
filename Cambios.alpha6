@@ -1,0 +1,285 @@
+* 2004/09/18 zipbreake@darkbolt.org          uH.ECL.1.49              FIX
+  -----------------------------------------------------------------------
+  El modo +A no se fijaba si ya estabas identificado como ircop antes de
+  ponerte el nick que fuese pertinente para ello.
+
+* 2004/09/18 zipbreake@darkbolt.org          uH.ECL.1.48          FEATURE
+  -----------------------------------------------------------------------
+  En el whois ahora nos indica además cuando se trata de un ircop solo o
+  cuando es un Administrador de servidor.
+
+* 2004/09/18 zipbreake@darkbolt.org          uH.ECL.1.47              FIX
+  -----------------------------------------------------------------------
+  Hacemos que el modo +B y +b se eliminen en determinadas situaciones que
+  no se eliminaban al cambiar de nick etc...
+
+* 2004/09/14 zipbreake@darkbolt.org          uH.ECL.1.46          FEATURE
+  -----------------------------------------------------------------------
+  Implementamos el modo +A. Server Admin, este modo está ligado al +r y
+  el +o, la perdida de cualquiera de estos modos provoca la perdida del
+  +A. Modificamos también los reply del s_err.c para que muestre que tipo
+  de ircop eres.
+
+* 2004/09/12 zipbreake@darkbolt.org          uH.ECL.1.45              FIX
+  -----------------------------------------------------------------------
+  Cambiamos el código de los contadores a ver si por fin solucionamos el
+  fallo de las cuentas de representantes. Ahora de parece que funciona.
+
+* 2004/09/12 zipbreake@darkbolt.org          uH.ECL.1.44          FEATURE
+  -----------------------------------------------------------------------
+  En caso de que "ocultar_servidores_en_el_map" seguimos con nuestra
+  política de seguridad y en un SQUIT de la red no se mostrarían los
+  nombres de los servidores sino que se mostraría de mensaje de salida
+  de los usuarios ".net .split"
+
+* 2004/08/29 zipbreake@darkbolt.org          uH.ECL.1.43          FEATURE
+  -----------------------------------------------------------------------
+  Implementamos un nuevo modo de usuarios en la tabla o, con el flag b y
+  el mismo modo 'b' señalamos los bots no oficiales de la red o bots que
+  no poseen privilegios especiales. Estos solo poseen una V-Mask de tipo
+  personalizada, información en el WHOIS especial y el modo +k para
+  poder enviar información masiva a la red. Estos bots deben de tener
+  siempre el +R puesto.
+
+* 2004/08/23 zipbreake@darkbolt.org          uH.ECL.1.42              FIX
+  -----------------------------------------------------------------------
+  Antes en el WHO mostraba los modos h, p, a todos conjuntamente si tu
+  status era igual o superior al modo que lo representa ahora solo se
+  muestra el que tengas.
+
+* 2004/08/23 zipbreake@darkbolt.org          uH.ECL.1.41              FIX
+  -----------------------------------------------------------------------
+  Arreglamos un BUG del MAP que publicaba porquería en servidores con
+  U-Line.
+
+* 2004/08/23 zipbreake@darkbolt.org          uH.ECL.1.40          FEATURE
+  -----------------------------------------------------------------------
+  Aplicamos el mismo parche anterior al comando WHO. Permitimos tambien
+  ahora que un usuario si vea el servidor en el que se encuentra, tambien
+  lo verá en el MAP.
+
+* 2004/08/23 zipbreake@darkbolt.org          uH.ECL.1.39          FEATURE
+  -----------------------------------------------------------------------
+  Cuando se ocultaban los servidores en el MAP no se hacía lo propio para
+  los servidores en el WHOIS, ahora en el WHOIS tampoco debería mostrarse
+  el nombre del servidor en el que estás.
+
+* 2004/08/23 zipbreake@darkbolt.org          uH.ECL.1.38          FEATURE
+  -----------------------------------------------------------------------
+  Implementamos la figura del CoAdministrador de la red. Pasamos el flag
+  c de coder a CoAdmin y hacemos lo mismo para el modo. Los devels ahora
+  tienen el modo y flag 'e'
+
+* 2004/08/19 zipbreake@darkbolt.org          uH.ECL.1.37              FIX
+  -----------------------------------------------------------------------
+  La IP virtual se generaba para cada nodo y se enviaba un mensaje del
+  cambio de la ip desde cada nodo al usuario llegandole el mensaje del
+  cambio repetido
+
+* 2004/08/19 zipbreake@darkbolt.org          uH.ECL.1.36              FIX
+  -----------------------------------------------------------------------
+  Cuando cambiabamos los modos la virtual mask se regeneraba mal, en el
+  cado de tener modo de desarrollador +c, este se ignoraba cuando no
+  eras representante de la red.
+
+* 2004/07/13 zipbreake@darkbolt.org          uH.ECL.1.35              FIX
+  -----------------------------------------------------------------------
+  Solucionamos un problema que no nos permitía propagar los modos de
+  forma correcta a servidores remotos.
+
+* 2004/07/12 zipbreake@darkbolt.org          uH.ECL.1.34          FEATURE
+  -----------------------------------------------------------------------
+  Permitimos que los bots (MODO +B) puedan utilizar el JOIN <#canal> OPER
+  y el x-mode en los canales al igual que los operadores.
+
+* 2004/07/12 zipbreake@darkbolt.org          uH.ECL.1.33              FIX
+  -----------------------------------------------------------------------
+  Corregidos ciertos errores en el make_virtualhost
+
+* 2004/07/06 zipbreake@darkbolt.org          uH.ECL.1.32          CLEANUP
+  -----------------------------------------------------------------------
+  Eliminamos el parche para nivel 5 y 10 de la tabla o de la BDD
+
+* 2004/07/06 zipbreake@darkbolt.org          uH.ECL.1.31          FEATURE
+  -----------------------------------------------------------------------
+  Cambiamos por el código privilegios para admins en vez del antiguo
+  nivel 10.
+
+* 2004/07/06 zipbreake@darkbolt.org          uH.ECL.1.30          FEATURE
+  -----------------------------------------------------------------------
+  Añadimos a Er_Maqui a los créditos ;)
+
+* 2004/07/06 zipbreake@darkbolt.org          uH.ECL.1.29              FIX
+  -----------------------------------------------------------------------
+  Gracias a er_maqui arreglamos el problema que ocasionaba cuando se
+  cambiaba de modo recalcular la v-mask siempre era informado a pesar de
+  no tener modo +x
+
+* 2004/07/02 zipbreake@darkbolt.org          uH.ECL.1.28          FEATURE
+  -----------------------------------------------------------------------
+  Volvemos a permitir ver los modos por petición de la administración a
+  cualquier usuario en el whois.
+
+* 2004/07/02 zipbreake@darkbolt.org          uH.ECL.1.27          FEATURE
+  -----------------------------------------------------------------------
+  Permitimos hacer kick y deop a un usuario +k sobre si mismo.
+
+* 2004/07/02 zipbreake@darkbolt.org          uH.ECL.1.26          FEATURE
+  -----------------------------------------------------------------------
+  Hacemos que un representante de la red solo pueda ponerse un modo, de
+  esta forma solo tomamos el de mayor representación eliminando los demas
+  en la función m_umode.
+
+* 2004/07/02 zipbreake@darkbolt.org          uH.ECL.1.25          FEATURE
+  -----------------------------------------------------------------------
+  Añadimos el flag 'B' a la tabla de operadores para la definición de
+  bots de servicio oficiales. Estos al conectar se les fija el modo +B
+  de forma permanente sin poder quitarselo y pueden usar el flag +k, el
+  cual se les fija al principio de forma automática.
+
+* 2004/07/02 zipbreake@darkbolt.org          uH.ECL.1.24              FIX
+  -----------------------------------------------------------------------
+  Arreglado varios problemas estéticos del whois
+
+* 2004/07/01 zipbreake@darkbolt.org          uH.ECL.1.23          FEATURE
+  -----------------------------------------------------------------------
+  Ahora los IRCops y los Operadores o de mayor rango pueden ver los
+  canales secretos y privados en el whois y en el LIST
+
+* 2004/07/01 zipbreake@darkbolt.org          uH.ECL.1.22          FEATURE
+  -----------------------------------------------------------------------
+  Cambios en las opciones de configuración por defecto del make config
+  para adecuarlo a la configuración por defecto de la red.
+
+* 2004/07/01 zipbreake@darkbolt.org          uH.ECL.1.21              FIX
+  -----------------------------------------------------------------------
+  Cuando haciamos un cambio de modos de forma manual las ip virtuales no
+  se regeneraban de forma correcta ni se hacia el recuento de operadores
+  de forma correcta.
+
+* 2004/06/30 zipbreake@darkbolt.org          uH.ECL.1.20              FIX
+  -----------------------------------------------------------------------
+  En la asignación de modos a, p, c, cuando un usuario entraba en la red
+  a pesar de dar el privilegio de la BDD los modos no se fijaban de forma
+  automática.
+
+* 2004/06/30 zipbreake@darkbolt.org          uH.ECL.1.19              FIX
+  -----------------------------------------------------------------------
+  Ahora los Ircops globales y los Operadores y Administradores podrán ver
+  los canales en los que esta un usuario con +I al igual que su IDLE.
+
+* 2004/06/29 zipbreake@darkbolt.org          uH.ECL.1.18          FEATURE
+  -----------------------------------------------------------------------
+  Cambiamos la denominación del ircd por una denominación más sencilla
+  en el sistema de versiones.
+
+* 2004/06/27 zipbreake@darkbolt.org       ircuH[EC]1.00rc17       FEATURE
+  -----------------------------------------------------------------------
+  En el lusers cambio el término helper(s) por representante(s)
+
+* 2004/06/27 zipbreake@darkbolt.org       ircuH[EC]1.00rc16           FIX
+  -----------------------------------------------------------------------
+  El contador de representantes de la red aumentaba el número sin cesar
+  cada vez que un admin se cambiaba algun modo.
+
+* 2004/06/27 zipbreake@darkbolt.org       ircuH[EC]1.00rc15       FEATURE
+  -----------------------------------------------------------------------
+  Añadimos la posibilidad de ocultar los servidores en el MAP y el LINKS
+  para configurar esta feature tenemos el valor en la tabla z de la BDD
+  (tabla de configuraciones) "ocultar.servidores.en.el.map"
+
+* 2004/06/27 zipbreake@darkbolt.org       ircuH[EC]1.00rc14       FEATURE
+  -----------------------------------------------------------------------
+  Implementamos el modo +I, invisibilidad avanzada. Este modo nos permite
+  ocultar a otros usuarios de la red nuestro IDLE y los canales no
+  comunes como ya sucedía con algunos bots. (+Bi)
+
+* 2004/06/27 zipbreake@darkbolt.org       ircuH[EC]1.00rc13       FEATURE
+  -----------------------------------------------------------------------
+  Limitamos el ver los modos totales de un usuario a los IRCops y Opers
+  de la red.
+
+* 2004/06/27 zipbreake@darkbolt.org       ircuH[EC]1.00rc12       FEATURE
+  -----------------------------------------------------------------------
+  Añadimos un nuevo modo +C (Usuario de conexión con clones). Este modo
+  nos sirve para conocer cuando un usuario se conecta desde una conexión
+  con clones en toda la red pudiendo actuar los bots de diferente forma
+  con el. Ejemplo cambiar GLINE por KILL.
+
+* 2004/06/23 zipbreake@darkbolt.org       ircuH[EC]1.00rc11       FEATURE
+  -----------------------------------------------------------------------
+  El nick en las v-masks automáticas lo normalizamos en minúsculas
+
+* 2004/06/23 zipbreake@darkbolt.org       ircuH[EC]1.00rc10       FEATURE
+  -----------------------------------------------------------------------
+  Eliminada la feature de DJ de la red por petición de la administración
+  de la red.
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc09       FEATURE
+  -----------------------------------------------------------------------
+  Cambiamos mecanismos en el m_umode. Ahora la posibilidad de ponerse
+  o no ciertos modos dependientes de la BDD no se chekean directamente
+  sobre la BDD sino que se evalua por el criterio de los propios Flags
+  de privilegios en BDD
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc08       FEATURE
+  -----------------------------------------------------------------------
+  Permitimos que los usuarios de un servidor puedan ponerse el modo +B
+  siempre y cuando la orden provenga del propio servidor.
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc07       FEATURE
+  -----------------------------------------------------------------------
+  Cambio el soporte de la tabla o a FLAGs. El sistema es el siguiente:
+  En vez de ser opers->5 y admins->10 ahora se puede introducir una
+  cadena. Los primeros caracteres corresponderán a flags positivos y los
+  que vayan detras de un "-" a flags negativos. Los flags positivos
+  pueden tambien especificarse detras de un "+". Todo flag/caracter no
+  reconocido es totalmente ignorado mientras que los flags positivos
+  en caso de llevar un modo ligado lo Auto-fijan cuando te identificas
+  con tu nick y en caso de ser un flag negativo pues no se autofijaría el
+  modo aunque tendrías opción de usarlo.
+  Para el uso de los flags por BDD defino un nuevo campo en la estructura
+  de usuarios denominado bdd_flags y defino los flags que primeramente
+  se utilizarán en la red.
+	Flag "a" FBDD_ADMIN
+	Flag "o" FBDD_OPER
+	Flag "p" FBDD_PREOPER
+  	Flag "c" FBDD_DEVEL
+	Flag "d" FBDD_DJ
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc06       FEATURE
+  -----------------------------------------------------------------------
+  Cambio el RAW 310 para poder mostrar el estatus de un usuario en la red
+  a su vez añado el RAW 308 para developers y el 320 para los DJ de la
+  radio.
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc05       FEATURE
+  -----------------------------------------------------------------------
+  Implementamos los modos anteriormente definidos en el s_users.c
+  dejandolos totalmente operativos.
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc04       FEATURE
+  -----------------------------------------------------------------------
+  Las IPs generadas de forma automática deben añadir al final el dominio
+  de la red. Para esto creamos un nuevo valor en la tabla z usada para
+  la configuración de la red. El campo es "dominio.de.la.red"
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc03       FEATURE
+  -----------------------------------------------------------------------
+  Modificamos la funcion make_virtualhost, añadimos otro tipo de IPs
+  virtuales personalizadas al margen de la tabla v y w, son las que se
+  generan automaticamente ligadas a los modos anteriores y operadores.
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc02       FEATURE
+  -----------------------------------------------------------------------
+  Añadimos el soporte para nuevos modos de usuarios en la definición de
+  modos, así como el soporte para gestionarlos. Estos modos son:
+	+a -> Es un administrador de la red	(HMODE_ADMIN)
+	+p -> Es un preoperador de la red	(HMODE_PREOPER)
+	+c -> Es un desarrollador de la red	(HMODE_DEVEL)
+	+D -> Es un DJ de la red		(HMODE_DJ)
+
+* 2004/06/22 zipbreake@darkbolt.org       ircuH[EC]1.00rc01       FEATURE
+  -----------------------------------------------------------------------
+  Iniciamos la programación de la adaptación para la red iRC-Eclipse
+  cambiamos el network.h por defecto a iRC-Eclipse
